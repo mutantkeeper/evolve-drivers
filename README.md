@@ -48,6 +48,6 @@ A short video: https://youtu.be/60YTUPZn30s
 
 ## Drive on streets
 
-After I added blocks to the map, I noticed that mutants are still quite blind. This is because they don't have full map state in the memory. Although they can read pane state any position, but without control flow statements (`if`, `for`, ...), they have no way to iterate all pane states on the map.
+After I added blocks to the map, I noticed that mutants are still quite blind. This is because they don't have full map state in the memory. Although they can read pane state at any position, but without control flow statements (`if`, `for`, ...), they have no way to iterate all pane states on the map.
 
 So the new plan is to add the `JUMP` opcode. To avoid infinite loop, I am going to limit the number of total instructions a mutant can run per turn.
