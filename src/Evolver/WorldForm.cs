@@ -38,6 +38,8 @@ namespace Evolver
                 return new EvolverSettings()
                 {
                     mapSize = (int)mapSize.Value,
+                    numBlocksPerRow = (int)blocksPerRow.Value,
+                    blockSize = (int)blockSize.Value,
                     eliminateThreshold = (int)eliminateThreshold.Value,
                     mostBytesToMutate = (int)mostBytesToMutate.Value,
                     numParallelThreads = (int)numParallelThreads.Value,

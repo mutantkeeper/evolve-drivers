@@ -54,10 +54,16 @@
             this.label1 = new System.Windows.Forms.Label();
             this.labelMapReset = new System.Windows.Forms.Label();
             this.mutantsDataGridView = new Evolver.MutantsDataGridView();
+            this.label9 = new System.Windows.Forms.Label();
+            this.blocksPerRow = new System.Windows.Forms.NumericUpDown();
+            this.label10 = new System.Windows.Forms.Label();
+            this.blockSize = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.mapSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.eliminateThreshold)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mostBytesToMutate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numParallelThreads)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.blocksPerRow)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.blockSize)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonRunEvolution
@@ -91,7 +97,7 @@
             // 
             // mapSize
             // 
-            this.mapSize.Location = new System.Drawing.Point(802, 89);
+            this.mapSize.Location = new System.Drawing.Point(884, 68);
             this.mapSize.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -106,7 +112,7 @@
             this.mapSize.Size = new System.Drawing.Size(80, 20);
             this.mapSize.TabIndex = 13;
             this.mapSize.Value = new decimal(new int[] {
-            10,
+            40,
             0,
             0,
             0});
@@ -114,7 +120,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(760, 68);
+            this.label3.Location = new System.Drawing.Point(808, 68);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(49, 13);
             this.label3.TabIndex = 14;
@@ -122,7 +128,7 @@
             // 
             // label4
             // 
-            this.label4.Location = new System.Drawing.Point(750, 123);
+            this.label4.Location = new System.Drawing.Point(704, 190);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(153, 30);
             this.label4.TabIndex = 15;
@@ -130,7 +136,7 @@
             // 
             // eliminateThreshold
             // 
-            this.eliminateThreshold.Location = new System.Drawing.Point(802, 156);
+            this.eliminateThreshold.Location = new System.Drawing.Point(884, 190);
             this.eliminateThreshold.Maximum = new decimal(new int[] {
             10000,
             0,
@@ -152,15 +158,15 @@
             // 
             // label5
             // 
-            this.label5.Location = new System.Drawing.Point(750, 197);
+            this.label5.Location = new System.Drawing.Point(750, 232);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(153, 22);
+            this.label5.Size = new System.Drawing.Size(107, 22);
             this.label5.TabIndex = 17;
             this.label5.Text = "Most bytes to mutate";
             // 
             // mostBytesToMutate
             // 
-            this.mostBytesToMutate.Location = new System.Drawing.Point(802, 223);
+            this.mostBytesToMutate.Location = new System.Drawing.Point(884, 230);
             this.mostBytesToMutate.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -246,9 +252,9 @@
             // 
             // ButtonResetStats
             // 
-            this.ButtonResetStats.Location = new System.Drawing.Point(725, 362);
+            this.ButtonResetStats.Location = new System.Drawing.Point(679, 360);
             this.ButtonResetStats.Name = "ButtonResetStats";
-            this.ButtonResetStats.Size = new System.Drawing.Size(159, 30);
+            this.ButtonResetStats.Size = new System.Drawing.Size(127, 30);
             this.ButtonResetStats.TabIndex = 26;
             this.ButtonResetStats.Text = "Reset All Stats";
             this.ButtonResetStats.UseVisualStyleBackColor = true;
@@ -256,7 +262,7 @@
             // 
             // numParallelThreads
             // 
-            this.numParallelThreads.Location = new System.Drawing.Point(799, 290);
+            this.numParallelThreads.Location = new System.Drawing.Point(884, 266);
             this.numParallelThreads.Maximum = new decimal(new int[] {
             16,
             0,
@@ -274,7 +280,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(804, 262);
+            this.label7.Location = new System.Drawing.Point(778, 273);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(79, 13);
             this.label7.TabIndex = 27;
@@ -293,9 +299,7 @@
             // checkBoxDriveThru
             // 
             this.checkBoxDriveThru.AutoSize = true;
-            this.checkBoxDriveThru.Checked = true;
-            this.checkBoxDriveThru.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.checkBoxDriveThru.Location = new System.Drawing.Point(753, 329);
+            this.checkBoxDriveThru.Location = new System.Drawing.Point(801, 313);
             this.checkBoxDriveThru.Name = "checkBoxDriveThru";
             this.checkBoxDriveThru.Size = new System.Drawing.Size(163, 17);
             this.checkBoxDriveThru.TabIndex = 30;
@@ -304,9 +308,9 @@
             // 
             // buttonResizeMutants
             // 
-            this.buttonResizeMutants.Location = new System.Drawing.Point(724, 398);
+            this.buttonResizeMutants.Location = new System.Drawing.Point(834, 360);
             this.buttonResizeMutants.Name = "buttonResizeMutants";
-            this.buttonResizeMutants.Size = new System.Drawing.Size(159, 30);
+            this.buttonResizeMutants.Size = new System.Drawing.Size(130, 30);
             this.buttonResizeMutants.TabIndex = 31;
             this.buttonResizeMutants.Text = "Resize Mutants";
             this.buttonResizeMutants.UseVisualStyleBackColor = true;
@@ -317,7 +321,7 @@
             this.checkBoxSelectCars.AutoSize = true;
             this.checkBoxSelectCars.Location = new System.Drawing.Point(502, 159);
             this.checkBoxSelectCars.Name = "checkBoxSelectCars";
-            this.checkBoxSelectCars.Size = new System.Drawing.Size(114, 17);
+            this.checkBoxSelectCars.Size = new System.Drawing.Size(111, 17);
             this.checkBoxSelectCars.TabIndex = 32;
             this.checkBoxSelectCars.Text = "only selected cars";
             this.checkBoxSelectCars.UseVisualStyleBackColor = true;
@@ -347,11 +351,72 @@
             this.mutantsDataGridView.Size = new System.Drawing.Size(416, 414);
             this.mutantsDataGridView.TabIndex = 11;
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(780, 107);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(77, 13);
+            this.label9.TabIndex = 36;
+            this.label9.Text = "Blocks per row";
+            // 
+            // blocksPerRow
+            // 
+            this.blocksPerRow.Location = new System.Drawing.Point(884, 105);
+            this.blocksPerRow.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.blocksPerRow.Name = "blocksPerRow";
+            this.blocksPerRow.Size = new System.Drawing.Size(80, 20);
+            this.blocksPerRow.TabIndex = 35;
+            this.blocksPerRow.Value = new decimal(new int[] {
+            4,
+            0,
+            0,
+            0});
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(801, 149);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(55, 13);
+            this.label10.TabIndex = 38;
+            this.label10.Text = "Block size";
+            // 
+            // blockSize
+            // 
+            this.blockSize.Location = new System.Drawing.Point(884, 147);
+            this.blockSize.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.blockSize.Minimum = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
+            this.blockSize.Name = "blockSize";
+            this.blockSize.Size = new System.Drawing.Size(80, 20);
+            this.blockSize.TabIndex = 37;
+            this.blockSize.Value = new decimal(new int[] {
+            5,
+            0,
+            0,
+            0});
+            // 
             // WorldForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(932, 440);
+            this.ClientSize = new System.Drawing.Size(1005, 440);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.blockSize);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.blocksPerRow);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.labelMapReset);
             this.Controls.Add(this.checkBoxSelectCars);
@@ -384,6 +449,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.eliminateThreshold)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mostBytesToMutate)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numParallelThreads)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.blocksPerRow)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.blockSize)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -417,5 +484,9 @@
         private System.Windows.Forms.CheckBox checkBoxSelectCars;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label labelMapReset;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.NumericUpDown blocksPerRow;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.NumericUpDown blockSize;
     }
 }

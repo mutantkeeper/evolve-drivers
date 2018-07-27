@@ -74,6 +74,20 @@ namespace Evolver
                 return;
             }
 
+            for (sbyte i = 0; i < panesPerRow; ++i)
+            {
+                for (sbyte j = 0; j <= panesPerColumn; ++j)
+                {
+                    if (Runner.Map[i, j] == PaneState.Invalid)
+                    {
+                        var mapPosition = new Point(i * paneSize.Width, j * paneSize.Height);
+                        var paneRect = new Rectangle(mapPosition, paneSize);
+                        paneRect.Inflate(-paneSize.Width / 10, -paneSize.Height / 10);
+                        graphics.FillRectangle(Brushes.DarkGray, paneRect);
+                    }
+                }
+            }
+
             foreach (var collision in Runner.Collisions)
             {
                 var mapPosition = new Point(collision.X * paneSize.Width, collision.Y * paneSize.Height);

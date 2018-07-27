@@ -9,6 +9,8 @@ namespace Evolver
     public struct EvolverSettings
     {
         public int mapSize;
+        public int numBlocksPerRow;
+        public int blockSize;
         public int eliminateThreshold;
         public int numParallelThreads;
         public int mostBytesToMutate;

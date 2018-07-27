@@ -58,6 +58,22 @@ namespace Evolver
             Collisions = new HashSet<Position>();
             Map = new Map((sbyte)settings.mapSize, (sbyte)settings.mapSize);
 
+            if (settings.numBlocksPerRow > 0)
+            {
+                int streetSize = (settings.mapSize - settings.blockSize * settings.numBlocksPerRow) / (settings.numBlocksPerRow + 1);
+                int streetAndBlockSize = streetSize + settings.blockSize;
+                for (int row = 0; row < settings.numBlocksPerRow; ++row)
+                {
+                    for (int column = 0; column < settings.numBlocksPerRow; ++column)
+                    {
+                        int x = streetSize + streetAndBlockSize * column;
+                        int y = streetSize + streetAndBlockSize * row;
+                        for (int i = 0; i < settings.blockSize; ++i)
+                            for (int j = 0; j < settings.blockSize; ++j)
+                                Map[(sbyte)(x + i), (sbyte)(y + j)] = PaneState.Invalid;
+                    }
+                }
+            }
             for (int i = 0; i < numMutants; ++i)
             {
                 Cars[i] = new Car();
