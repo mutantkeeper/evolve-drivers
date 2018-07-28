@@ -34,9 +34,7 @@ To be simple, a map is a grid which width and height are equal. Every driver (mu
 
 ### Environment
 
-**Only 100** mutants each of which has **only 256** instructions (or 1024 bytes). Map size used to evolve is 30 x 30 and sometimes 40 x 40.
-
-A short video: https://youtu.be/60YTUPZn30s
+**Only 100** mutants each of which has **only 256** instructions (or 1024 bytes). Map size used to evolve is 40 x 40.
 
 ### New
 
