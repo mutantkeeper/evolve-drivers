@@ -30,24 +30,18 @@ An instruction contains an op code and operands, and flags indicating if operand
 
 To be simple, a map is a grid which width and height are equal. Every driver (mutant) drives a car, and every car can only stay on a pane on the map. In each turn, every driver makes an action which is move ahead, turn left, turn right, turn back or stay. When a car is moving into a pane where is already occupied by something, the collision happens, and the car will say. When multiple cars try to move into an empty pane in the same turn, the collision happens, and all of them stay at their current positions.
 
-## Current status
+## Results
 
 ### Environment
 
 **Only 100** mutants each of which has **only 256** instructions (or 1024 bytes). Map size used to evolve is 30 x 30 and sometimes 40 x 40.
 
-### Step 1
-
-It took 4 hours to have mutants drive directly to their goals if each of them run on its own map.
-
-### Step 2
-
-It took another 12 hours to have them able to drive around others to reach their goals, and never get stuck so there is no need to reset the map.
-
 A short video: https://youtu.be/60YTUPZn30s
 
-## Drive on streets
+### New
 
-After I added blocks to the map, I noticed that mutants are still quite blind. This is because they don't have full map state in the memory. Although they can read pane state at any position, but without control flow statements (`if`, `for`, ...), they have no way to iterate all pane states on the map.
+I restarted evolution from scratch. And this time it took only **10 minutes** to generate mutants that can drive to the goal.
 
-So the new plan is to add the `JUMP` opcode. To avoid infinite loop, I am going to limit the number of total instructions a mutant can run per turn.
+There are 2 major changes made recently:
+- persistent memory
+- Jump instructions.
