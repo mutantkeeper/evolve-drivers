@@ -45,3 +45,5 @@ I restarted evolution from scratch. And this time it took only **10 minutes** to
 There are 2 major changes made recently:
 - persistent memory
 - Jump instructions.
+
+After less than 40 minutes: https://youtu.be/7DioIDzWgO4
