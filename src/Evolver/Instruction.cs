@@ -17,12 +17,23 @@ namespace Evolver
         TotalDecisions
     }
 
+    enum JumpType: byte
+    {
+        Unconditional = 0,
+        Unconditional2 = 1,
+        IfZero = 2,
+        IfNotZero = 3,
+        IfPositive = 4,
+        IfNegative = 5,
+        IfZeroOrPositive = 6,
+        IfZeroOrNegative = 7,
+    }
+
     enum Opcode : byte
     {
         NoOp = 0,
         // op, op1, op2, out_addr
-        FirstOp,
-        Add = FirstOp,
+        Add,
         Sub,
         Mul,
         Div,
@@ -33,14 +44,20 @@ namespace Evolver
         LShift,
         RShift,
         Cmp,
-        LastOp = Cmp,
-
         Set, // dest, value, size
         Copy, // from, to, size
         GetGoal, // x_addr, y_addr
         GetPaneState, // x, y, result addr.
-        // Jump,  // code_addr_16 (lo, hi)， cond
-
+        Jump,   // operands: 
+                // first 2:
+                //      IsRelative: 1 bit (if address is an offset to the current position)
+                //      JumpType: 3 bits
+                //      CodeAddress: 12 bits (at most 4096 instructions)
+                // The last operand:
+                //      Condition: must be address.
+                // Limitation: 
+                //      This doesn't allow mutants to jump to a computed address (loaded from memmory).
+                //      To be considered in the future.
         NumOpcodes,
     }
 
@@ -60,6 +77,8 @@ namespace Evolver
                 instruction.operands[i] = *bytes++;
                 instruction.isAddr[i] = (opcode & (byte)(0x80 >> i)) != 0;
             }
+            if (instruction.op == Opcode.Jump)
+                return new Jump(ref instruction);
             return instruction;
         }
 
@@ -91,6 +110,7 @@ namespace Evolver
 
         public override string ToString()
         {
+            // TODO: Make Jump instructions more readable.
             var operandStrings = new string[3];
             for (int i = 0; i < 3; ++i)
             {
@@ -100,5 +120,30 @@ namespace Evolver
         }
 
         public const int BYTES = 4;
+    }
+
+    class Jump: Instruction
+    {
+        public bool isRelative;
+        public JumpType type;
+        public UInt16 codeAddress;
+        public byte conditionAddress
+        {
+            get
+            {
+                return operands[2];
+            }
+        }
+        public Jump(ref Instruction instruction)
+        {
+            this.op = instruction.op;
+            this.operands = instruction.operands;
+            this.isAddr = instruction.isAddr;
+            instruction = null;
+            int firstTwo = ((int)this.operands[0] << 8) + this.operands[1];
+            this.isRelative = (firstTwo & 0x8000) != 0;
+            this.type = (JumpType)(firstTwo & 0x7000);
+            this.codeAddress = (UInt16)(firstTwo & 0x0FFF);
+        }
     }
 }

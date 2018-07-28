@@ -114,7 +114,7 @@ namespace Evolver
                     {
                         var mutant = mutantManager.GetMutant(i);
                         var car = Cars[i];
-                        var decision = mutant.MakeDecision(Map, car, mutantMemory[i]);
+                        var decision = mutant.MakeDecision(Map, car, mutantMemory[i], settings.maxInstructionsToRun);
                         switch (decision)
                         {
                             case Decision.Move:

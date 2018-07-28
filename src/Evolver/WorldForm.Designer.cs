@@ -58,12 +58,15 @@
             this.blocksPerRow = new System.Windows.Forms.NumericUpDown();
             this.label10 = new System.Windows.Forms.Label();
             this.blockSize = new System.Windows.Forms.NumericUpDown();
+            this.label12 = new System.Windows.Forms.Label();
+            this.instructionsToRun = new System.Windows.Forms.NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)(this.mapSize)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.eliminateThreshold)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mostBytesToMutate)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numParallelThreads)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.blocksPerRow)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.blockSize)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.instructionsToRun)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonRunEvolution
@@ -89,7 +92,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(722, 35);
+            this.label2.Location = new System.Drawing.Point(722, 16);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(84, 13);
             this.label2.TabIndex = 12;
@@ -97,7 +100,7 @@
             // 
             // mapSize
             // 
-            this.mapSize.Location = new System.Drawing.Point(884, 68);
+            this.mapSize.Location = new System.Drawing.Point(884, 39);
             this.mapSize.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -120,7 +123,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(808, 68);
+            this.label3.Location = new System.Drawing.Point(808, 39);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(49, 13);
             this.label3.TabIndex = 14;
@@ -354,7 +357,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(780, 107);
+            this.label9.Location = new System.Drawing.Point(780, 70);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(77, 13);
             this.label9.TabIndex = 36;
@@ -362,7 +365,7 @@
             // 
             // blocksPerRow
             // 
-            this.blocksPerRow.Location = new System.Drawing.Point(884, 105);
+            this.blocksPerRow.Location = new System.Drawing.Point(884, 68);
             this.blocksPerRow.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -380,7 +383,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(801, 149);
+            this.label10.Location = new System.Drawing.Point(801, 106);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(55, 13);
             this.label10.TabIndex = 38;
@@ -388,7 +391,7 @@
             // 
             // blockSize
             // 
-            this.blockSize.Location = new System.Drawing.Point(884, 147);
+            this.blockSize.Location = new System.Drawing.Point(884, 104);
             this.blockSize.Maximum = new decimal(new int[] {
             1000,
             0,
@@ -408,11 +411,44 @@
             0,
             0});
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(736, 147);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(142, 13);
+            this.label12.TabIndex = 40;
+            this.label12.Text = "Instructions to run every time";
+            // 
+            // instructionsToRun
+            // 
+            this.instructionsToRun.Location = new System.Drawing.Point(884, 145);
+            this.instructionsToRun.Maximum = new decimal(new int[] {
+            100000,
+            0,
+            0,
+            0});
+            this.instructionsToRun.Minimum = new decimal(new int[] {
+            1024,
+            0,
+            0,
+            0});
+            this.instructionsToRun.Name = "instructionsToRun";
+            this.instructionsToRun.Size = new System.Drawing.Size(80, 20);
+            this.instructionsToRun.TabIndex = 39;
+            this.instructionsToRun.Value = new decimal(new int[] {
+            4096,
+            0,
+            0,
+            0});
+            // 
             // WorldForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1005, 440);
+            this.Controls.Add(this.label12);
+            this.Controls.Add(this.instructionsToRun);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.blockSize);
             this.Controls.Add(this.label9);
@@ -451,6 +487,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numParallelThreads)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.blocksPerRow)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.blockSize)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.instructionsToRun)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -488,5 +525,7 @@
         private System.Windows.Forms.NumericUpDown blocksPerRow;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.NumericUpDown blockSize;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.NumericUpDown instructionsToRun;
     }
 }

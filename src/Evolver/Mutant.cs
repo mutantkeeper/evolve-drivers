@@ -81,7 +81,7 @@ namespace Evolver
             return text.ToString();
         }
     
-        internal Decision MakeDecision(Map map, Car car, sbyte[] memory)
+        internal Decision MakeDecision(Map map, Car car, sbyte[] memory, int instructionsLimit)
         {
             var relativeGoal = car.RelativeGoal();
             memory[0] = 0;
@@ -102,8 +102,56 @@ namespace Evolver
             for (int i = 13; i < 128; ++i)
                 memory[i] = 0;
 
-            foreach (var instruction in instructions)
+            int instructionsExecuted = 0;
+            for (int instructionAddress = 0;
+                instructionAddress < instructions.Length && instructionsExecuted < instructionsLimit;
+                ++instructionAddress, ++instructionsExecuted)
             {
+                var instruction = instructions[instructionAddress];
+
+                if (instruction.op == Opcode.Jump)
+                {
+                    Jump jump = instruction as Jump;
+                    bool conditionMatched = jump.type == JumpType.Unconditional || jump.type == JumpType.Unconditional2;
+                    if (!conditionMatched)
+                    {
+                        sbyte cond = memory[jump.conditionAddress];
+                        switch (jump.type)
+                        {
+                            case JumpType.IfZero:
+                                conditionMatched = cond == 0;
+                                break;
+                            case JumpType.IfNotZero:
+                                conditionMatched = cond != 0;
+                                break;
+                            case JumpType.IfPositive:
+                                conditionMatched = cond > 0;
+                                break;
+                            case JumpType.IfNegative:
+                                conditionMatched = cond < 0;
+                                break;
+                            case JumpType.IfZeroOrPositive:
+                                conditionMatched = cond >= 0;
+                                break;
+                            case JumpType.IfZeroOrNegative:
+                                conditionMatched = cond <= 0;
+                                break;
+                        }
+                        if (!conditionMatched)
+                            continue;
+                    }
+                    int address = jump.codeAddress;
+                    if (jump.isRelative)
+                    {
+                        address = (Int16)jump.codeAddress + instructionAddress;
+                    }
+                    // We are strict on Jumps.
+                    if (address < 0 || address >= instructions.Length)
+                        continue;
+                    instructionAddress = address - 1;
+                    continue;
+                }
+
                 var operands = new sbyte[3];
                 for (int i = 0; i < 3; ++i)
                 {

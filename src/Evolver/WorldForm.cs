@@ -40,6 +40,7 @@ namespace Evolver
                     mapSize = (int)mapSize.Value,
                     numBlocksPerRow = (int)blocksPerRow.Value,
                     blockSize = (int)blockSize.Value,
+                    maxInstructionsToRun = (int)instructionsToRun.Value,
                     eliminateThreshold = (int)eliminateThreshold.Value,
                     mostBytesToMutate = (int)mostBytesToMutate.Value,
                     numParallelThreads = (int)numParallelThreads.Value,
