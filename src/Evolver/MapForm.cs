@@ -76,7 +76,7 @@ namespace Evolver
 
             for (sbyte i = 0; i < panesPerRow; ++i)
             {
-                for (sbyte j = 0; j <= panesPerColumn; ++j)
+                for (sbyte j = 0; j < panesPerColumn; ++j)
                 {
                     if (Runner.Map[i, j] == PaneState.Invalid)
                     {

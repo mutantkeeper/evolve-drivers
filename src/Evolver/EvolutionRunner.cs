@@ -261,20 +261,19 @@ namespace Evolver
                         eliminated = sorted.Take(numReplicates).ToList();
                         replicated = sorted.Skip(numMutants - numReplicates).ToList();
                     }
-
-                    //else if (oldLowScore + settings.eliminateThreshold > oldHighScore)
-                    //{
-                    //    int[] sorted = new int[numMutants];
-                    //    int i = 0;
-                    //    foreach (var item in mutantsByScore)
-                    //    {
-                    //        foreach (var id in item.Value)
-                    //            sorted[i++] = id;
-                    //    }
-                    //    numReplicates = numMutants / 2;
-                    //    eliminated = sorted.Take(numReplicates).ToList();
-                    //    replicated = sorted.Skip(numMutants - numReplicates).ToList();
-                    //}
+                    else if (oldLowScore + settings.eliminateThreshold > oldHighScore)
+                    {
+                        int[] sorted = new int[numMutants];
+                        int i = 0;
+                        foreach (var item in mutantsByScore)
+                        {
+                            foreach (var id in item.Value)
+                                sorted[i++] = id;
+                        }
+                        numReplicates = numMutants / 4;
+                        eliminated = sorted.Take(numReplicates).ToList();
+                        replicated = sorted.Skip(numMutants - numReplicates).ToList();
+                    }
 
                     int[] mutatedBytes = new int[replicated.Count];
                     Parallel.For(0, replicated.Count,
