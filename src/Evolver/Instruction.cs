@@ -140,10 +140,9 @@ namespace Evolver
             this.operands = instruction.operands;
             this.isAddr = instruction.isAddr;
             instruction = null;
-            int firstTwo = ((int)this.operands[0] << 8) + this.operands[1];
-            this.isRelative = (firstTwo & 0x8000) != 0;
-            this.type = (JumpType)(firstTwo & 0x7000);
-            this.codeAddress = (UInt16)(firstTwo & 0x0FFF);
+            this.isRelative = (this.operands[0] & 0x80) != 0;
+            this.type = (JumpType)((this.operands[0] >> 4) & 7);
+            this.codeAddress = (UInt16)((((UInt16)this.operands[0] & 0xF) << 8) | this.operands[1]);
         }
     }
 }
