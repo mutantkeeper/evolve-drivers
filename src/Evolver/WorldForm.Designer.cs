@@ -324,9 +324,9 @@
             this.checkBoxSelectCars.AutoSize = true;
             this.checkBoxSelectCars.Location = new System.Drawing.Point(502, 159);
             this.checkBoxSelectCars.Name = "checkBoxSelectCars";
-            this.checkBoxSelectCars.Size = new System.Drawing.Size(111, 17);
+            this.checkBoxSelectCars.Size = new System.Drawing.Size(122, 17);
             this.checkBoxSelectCars.TabIndex = 32;
-            this.checkBoxSelectCars.Text = "only selected cars";
+            this.checkBoxSelectCars.Text = "only selected drivers";
             this.checkBoxSelectCars.UseVisualStyleBackColor = true;
             // 
             // label1
