@@ -70,13 +70,13 @@ namespace Evolver
                         query = query.OrderBy(x => x.Id);
                         break;
                     case "Score":
-                        query = query.OrderBy(x => x.ScorePer100Turns);
+                        query = query.OrderBy(x => x.Score);
                         break;
                     case "Turns":
-                        query = query.OrderBy(x => x.Turns).ThenByDescending(x => x.ScorePer100Turns);
+                        query = query.OrderBy(x => x.Turns).ThenByDescending(x => x.Score);
                         break;
                     case "Generation":
-                        query = query.OrderBy(x => x.Generation).ThenByDescending(x => x.ScorePer100Turns);
+                        query = query.OrderBy(x => x.Generation).ThenByDescending(x => x.Score);
                         break;
                 }
             }
@@ -88,13 +88,13 @@ namespace Evolver
                         query = query.OrderByDescending(x => x.Id);
                         break;
                     case "Score":
-                        query = query.OrderByDescending(x => x.ScorePer100Turns);
+                        query = query.OrderByDescending(x => x.Score);
                         break;
                     case "Turns":
-                        query = query.OrderByDescending(x => x.Turns).ThenByDescending(x => x.ScorePer100Turns);
+                        query = query.OrderByDescending(x => x.Turns).ThenByDescending(x => x.Score);
                         break;
                     case "Generation":
-                        query = query.OrderByDescending(x => x.Generation).ThenByDescending(x => x.ScorePer100Turns);
+                        query = query.OrderByDescending(x => x.Generation).ThenByDescending(x => x.Score);
                         break;
                 }
             }

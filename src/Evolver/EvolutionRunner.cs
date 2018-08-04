@@ -198,7 +198,6 @@ namespace Evolver
                         int score = car.IsDirectionRight() ? 8 : -8;
                         if (car.Goal.Equals(car.Position))
                         {
-                            score += 32;
                             car.Goal = GetRandomBlankPosition();
                             consecutiveStaleTurns = 0;
                             turnsNoSucceed = 0;
