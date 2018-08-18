@@ -84,7 +84,7 @@ namespace Evolver
             }
             for (int i = 0; i < numMutants; ++i)
             {
-                Cars[i].Goal = GetRandomBlankPosition();
+                SetRandomGoal(i);
             }
             for (int i = 0; i < numMutants; ++i)
                 mutantMemory[i] = new sbyte[256];
@@ -198,7 +198,7 @@ namespace Evolver
                         int score = car.IsDirectionRight() ? 8 : -8;
                         if (car.Goal.Equals(car.Position))
                         {
-                            car.Goal = GetRandomBlankPosition();
+                            SetRandomGoal(i);
                             consecutiveStaleTurns = 0;
                             turnsNoSucceed = 0;
                         }
@@ -379,7 +379,7 @@ namespace Evolver
                 if (Map[pos] == PaneState.Invalid || pos.Equals(car.Position))
                     continue;
                 var diff = Math.Abs(pos.X - car.Position.X) + Math.Abs(pos.Y - car.Position.Y);
-                if (diff < (Map.Width + Map.Height) / 4)
+                if (diff < (Map.Width + Map.Height) / 2)
                     continue;
                 car.Goal = pos;
                 break;
