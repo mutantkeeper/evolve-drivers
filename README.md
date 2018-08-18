@@ -45,3 +45,10 @@ There are 2 major changes made recently:
 - Jump instructions.
 
 After less than 40 minutes: https://youtu.be/7DioIDzWgO4
+
+### Left-hand traffic evolved
+
+This was done with 100 1024-instruction mutants. It is just by chance that it is left-hand traffic but not right-hand. I did see right-hand traffic during experiments. In the video, you can see many mutants try to drive on the left side of the roads.
+
+https://youtu.be/X3bHBxe3NXU
+
